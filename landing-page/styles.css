@@ -1,39 +1,199 @@
 * {
-    font-family: 'Roboto', sans-serif;
-    text-decoration: none;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
 }
 
 :root {
-    --hero-bg-color: #1F2937;
-    --quote-bg-color: #E5E7EB;
+  --hero-bg-color: #1f2937;
+  --quote-bg-color: #e5e7eb;
 
-    --Hero-Main-text: #F9FAF8;
-    --Hero-Secondary-text:#E5E7EB;    
-    --Header-Logo-Text:#F9FAF8; 
-    --Button-color: #3882F6;   
-    --information-header-text: #1F2937;
-    --Quote-text: #1F2937;
+  --Hero-Main-text: #f9faf8;
+  --Hero-Secondary-text: #e5e7eb;
+  --Header-Logo-Text: #f9faf8;
+  --Button-color: #3882f6;
+  --information-header-text: #1f2937;
+  --Quote-text: #1f2937;
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background-color: var(--hero-bg-color);
+}
+header .logo{
+    color: var(--Header-Logo-Text);
+    font-size: 24px;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+header nav ul {
+  display: flex;
+  gap: 24px;
+}
+header nav ul li a {
+    color: var(--Hero-Secondary-text);
+}
+
+ .hero {
     display: flex;
-    justify-content: space-between;
+    background-color: var(--hero-bg-color);
+    padding: 24px 60px;
+}
+ .hero .hero-text{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.hero .hero-text h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--Hero-Main-text);
+}
+.hero .hero-text p {
+    color: var(--Hero-Secondary-text);
+    font-weight: 300;
+}
+
+ .hero .img-placeholder {
+    height: inherit;
+    width: 50%;
+    border: solid 1px red;
+}
+.hero button {
+    background-color: var(--Button-color);
+    align-self: flex-start;
+    border-radius: 4px;
+    width: 25%;
+    height: 1.5rem;
+    border: none;
+    color: var(--Header-Logo-Text);
+    font-weight: 700;
+    margin-top: 8px;
+}
+.hero button:hover{
+    cursor: pointer;
+}
+
+/* section 2 */
+
+.second-section{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 24px 60px;
 }
 
-header nav ul {
+.cards{
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 64px;
+    margin-top: 24px;
 }
-main {
-    padding: 24px 60px;
+
+.card {
+    flex: 1 1 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-container {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+    border: solid 2.5px var(--Button-color);
+    border-radius: 8px;
+}
+
+.img-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .content {
+    padding-top: 12px;
+    color: var(--information-header-text);
+    font-weight: 300;
+}
+
+.third-section {
+    background-color: var(--quote-bg-color);
+    padding: 60px 
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+}
+
+.quote {
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--Quote-text);
+}
+
+.author {
+    align-self: flex-end;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.fourth-section {
+    padding: 60px 60px;
+}
+
+.call-to-action {
+    padding: 30px;
+    display: flex;
+    background-color: var(--Button-color);
+    border-radius: 4px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.call-text {
+    color: var(--Hero-Main-text);
+    font-size: 1.2rem;
+}
+.call-text p {
+    color: var(--Hero-Secondary-text);
+    font-size: 0.7rem;
+}
+
+.call-action-button{
+    background-color: var(--Button-color);
+    border-radius: 4px;
+    height: 1.5rem;
+    border: solid 1px var(--Header-Logo-Text);
+    color: var(--Header-Logo-Text);
+    font-weight: 700;
+    padding: 4px 12px;
+}
+.call-action-button:hover {
+    cursor: pointer;
 }
 
 footer {
-    padding: 24px 60px;
+  padding: 24px 60px;
+  background-color: var(--hero-bg-color);
+  display: flex;
+  justify-content: center;
+}
+footer p{
+    color: var(--Header-Logo-Text);
 }
