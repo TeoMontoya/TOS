@@ -1,4 +1,43 @@
 * {
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:root {
+    --hero-bg-color: #1F2937;
+    --quote-bg-color: #E5E7EB;
+
+    --Hero-Main-text: #F9FAF8;
+    --Hero-Secondary-text:#E5E7EB;    
+    --Header-Logo-Text:#F9FAF8; 
+    --Button-color: #3882F6;   
+    --information-header-text: #1F2937;
+    --Quote-text: #1F2937;
+}
+
+main {
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 24px;
+}
+main {
+    padding: 24px 60px;
+}
+
+footer {
+    padding: 24px 60px;
 }
