@@ -19,10 +19,6 @@
     --Quote-text: #1F2937;
 }
 
-main {
-
-}
-
 header {
     display: flex;
     justify-content: space-between;
