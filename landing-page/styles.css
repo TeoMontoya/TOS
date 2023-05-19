@@ -46,8 +46,9 @@ header nav ul li a {
 
  .hero {
     display: flex;
+    gap: 20px;
     background-color: var(--hero-bg-color);
-    padding: 24px 60px;
+    padding: 84px
 }
  .hero .hero-text{
     display: flex;
@@ -67,7 +68,8 @@ header nav ul li a {
  .hero .img-placeholder {
     height: inherit;
     width: 50%;
-    border: solid 1px red;
+    border: none;
+    background-color: rgb(183, 183, 183);
 }
 .hero button {
     background-color: var(--Button-color);
@@ -90,7 +92,14 @@ header nav ul li a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 60px;
+    padding: 84px
+}
+
+.second-section  h2{
+    font-size: 36px;
+    font-weight: 700;
+    color: var(#1f2937);
+    padding-bottom: 12px;
 }
 
 .cards{
@@ -99,7 +108,7 @@ header nav ul li a {
     justify-content: center;
     gap: 64px;
     margin-top: 24px;
-    width: 75%;
+    width: 100%;
 }
 
 .card {
@@ -133,7 +142,7 @@ header nav ul li a {
 
 .third-section {
     background-color: var(--quote-bg-color);
-    padding: 60px 
+    padding: 80px 
 }
 
 figure {
@@ -155,7 +164,7 @@ figure {
 }
 
 .fourth-section {
-    padding: 60px 60px;
+    padding: 80px;
 }
 
 .call-to-action {
