@@ -92,7 +92,7 @@ header nav ul li a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 84px
+    padding: 60px 180px;
 }
 
 .second-section  h2{
@@ -142,7 +142,7 @@ header nav ul li a {
 
 .third-section {
     background-color: var(--quote-bg-color);
-    padding: 80px 
+    padding: 60px 180px;
 }
 
 figure {
@@ -164,7 +164,7 @@ figure {
 }
 
 .fourth-section {
-    padding: 80px;
+    padding: 60px 180px;
 }
 
 .call-to-action {
