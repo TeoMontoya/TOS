@@ -99,6 +99,7 @@ header nav ul li a {
     justify-content: center;
     gap: 64px;
     margin-top: 24px;
+    width: 75%;
 }
 
 .card {
