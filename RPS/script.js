@@ -61,4 +61,7 @@ after a 'weapon' is chosen
 THIRD
 the 'playerWeapon' icon or text should change tyo match those of the attack being used.
 'pcWeapon' might as well
+
+FOURTH
+the game ends as soon as the scoreboard reaches 5 on any way
 */
