@@ -25,21 +25,40 @@ function playGame(playerChoice) {
   // WITH this structure I created, called 'a dictionary' I can create Key Value pairs that will facilitate
   // the reading of the code and dodges the need of a long list of 'ifs'.
   // also makes the code more readable
-  let winMessage = "You win!";
+  let winMessage = `${playerChoice} beats ${pcChoice}, You win!`;
   let tieMessage = 'Oh! Looks like we have a tie.';
   let loseMessage = `${playerChoice} loses against ${pcChoice}, You lose.`;
 
   let outcomes = {
-    Rock: { beats: "Scissors", message: `Rock beats Scissors, ${winMessage}` },
-    Paper: { beats: "Rock", message: `Paper beats Rock, ${winMessage}` },
-    Scissors: { beats: "Paper", message: `Scissors beats Paper, ${winMessage}` }
+    Rock: { beats: "Scissors"},
+    Paper: { beats: "Rock"},
+    Scissors: { beats: "Paper"}
   };
+
+  // THIS ONE is the game, it compares who is the one winning or losing.
 
   if (playerChoice === pcChoice) {
     console.log(tieMessage)
   } else if (outcomes[playerChoice].beats === pcChoice) {
-    console.log(outcomes[playerChoice].message)
+    console.log(winMessage)
   } else {
     console.log(loseMessage)
   }
 }
+
+/* NEXT STEPS
+
+FIRST
+I need to make it so, everytime theres a win or a lose, I add to the WINS/LOSES scoreboard
+
+SECOND
+after a 'weapon' is chosen
+  'choose your weapon'  to ==> Victory/Defeat
+  'first to 5 wins is victorious'  to ==> battle text
+
+      'battle text' => ${playerSelection} defeat/isDefeated ${pcSelection}
+
+THIRD
+the 'playerWeapon' icon or text should change tyo match those of the attack being used.
+'pcWeapon' might as well
+*/

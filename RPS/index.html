@@ -10,18 +10,45 @@
 </head>
 
 <body>
-    <section>
-        <div>
+    <header>
+        <h1>RPS</h1>
+    </header>
+    <main>
+        <section class="text">
+            <p class="infoText">
+                Choose your weapon
+            </p>
+            <p class="battleText">
+                first to 5 wins is victorious!
+            </p>
+        </section>
+        <section class="battleSection">
+            <div class="selectionContainer">
+                <div class="playerWeapon">
+                    ?
+                </div>
+                <div class="pcWeapon">
+                    ?
+                </div>
+            </div>
+            <div class="scoreboard">
+                scoreboard
+                <div>
+                    <p>Wins: <span class="winCounter">0</span></p>
+                    <p>Loses: <span class="loseCounter">0</span></p>
+                </div>
+            </div>
+        </section>
+        <section class="weapons">
+            <div class="buttons">
+                <button class="attack" id="Rock">Rock</button>
+                <button class="attack" id="Paper">Paper</button>
+                <button class="attack" id="Scissors">Scissors</button>
+            </div>
+        </section>
 
-        </div>
-    </section>
-    <section>
-        <div class="buttons">
-            <button class="attack" id="Rock">Rock</button>
-            <button class="attack" id="Paper">Paper</button>
-            <button class="attack" id="Scissors">Scissors</button>
-        </div>
-    </section>
+    </main>
+
     <script src="./script.js"></script>
 </body>
 

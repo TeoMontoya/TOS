@@ -1,6 +1,10 @@
 * {
-    background-color: black;
+    background-color: #282c34;
+    color: white;
 }
 button {
-    background-color: white;
+    border: none;
+}
+button:hover {
+    cursor: pointer;
 }
