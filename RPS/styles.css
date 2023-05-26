@@ -1,22 +1,106 @@
 * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
     background-color: #282c34;
     color: white;
-}
-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .infoText,
+  .battleText {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .battleText {
+    font-size: 24px;
+  }
+  
+  .selectionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .playerWeapon,
+  .pcWeapon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 210px;
+    text-align: center;
+  }
+  
+  .playerChoiceLabel,
+  .pcChoiceLabel {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .playerChoice,
+  .pcChoice {
+    font-size: 96px;
+    width: 160px;
+    height: 160px;
+  }
+  
+  .playerChoiceLabel,
+  .pcChoiceLabel {
+    display: none;
+  }
+  
+  .scoreboard {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .scoreboard p {
+    margin-bottom: 5px;
+  }
+  
+  .weapons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+  
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
     border: none;
-}
-button:hover {
+    border-radius: 4px;
+    background-color: #555;
+    color: white;
     cursor: pointer;
-}
-
-
-
-
-
-
-
-/* CSS for the modal */
-.modal {
+  }
+  
+  button:hover {
+    background-color: #777;
+  }
+  
+  .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -29,15 +113,26 @@ button:hover {
   }
   
   .modal-content {
-    background-color: #fefefe;
+    background-color: #333;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border-radius: 4px;
     width: 300px;
     text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
   
-  button {
+  button.modal-restart {
     margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button.modal-restart:hover {
+    background-color: #777;
   }
   

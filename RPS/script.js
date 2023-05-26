@@ -1,88 +1,101 @@
-const attackButtons = document.querySelectorAll(".attack");
+// Define constants
+const MAX_WINS = 3;
+
+// DOM elements
 const elements = {
+  attackButtons: document.querySelectorAll(".attack"),
   infoText: document.querySelector('.infoText'),
   battleText: document.querySelector('.battleText'),
-  playerWeapon: document.querySelector('.playerWeapon'),
-  pcWeapon: document.querySelector('.pcWeapon'),
+  playerChoiceLabel: document.querySelector('.playerChoiceLabel'),
+  pcChoiceLabel: document.querySelector('.pcChoiceLabel'),
+  playerWeapon: document.querySelector('.playerChoice'),
+  pcWeapon: document.querySelector('.pcChoice'),
   winCounter: document.querySelector('.winCounter'),
   loseCounter: document.querySelector('.loseCounter'),
+  outcome: document.getElementById('outcome'),
+  gameOverModal: document.getElementById('gameOverModal'),
+  restartButton: document.getElementById('restartButton')
 };
-const outcome = document.getElementById('outcome');
 
+// Game state
+let playerWins = 0;
+let pcWins = 0;
+
+// Emojis mapping
 const emojis = {
   Rock: "👊",
   Paper: "✋",
   Scissors: "✌️"
 };
 
-const maxWins = 3;
-let playerWins = 0;
-let pcWins = 0;
-
-attackButtons.forEach(button => {
+// Event listeners for attack buttons
+elements.attackButtons.forEach(button => {
   button.addEventListener("click", () => {
-    playGame(button.id);
+    const playerChoice = button.id;
+    playGame(playerChoice);
   });
 });
 
+// Function to play the game
 function playGame(playerChoice) {
   const choices = ["Rock", "Paper", "Scissors"];
   const pcChoice = choices[Math.floor(Math.random() * choices.length)];
 
+  elements.playerChoiceLabel.style.display = "block"; // Show the player choice label
+  elements.pcChoiceLabel.style.display = "block"; // Show the PC choice label
+
   elements.playerWeapon.textContent = emojis[playerChoice];
   elements.pcWeapon.textContent = emojis[pcChoice];
-
-  const winMessage = `${playerChoice} beats ${pcChoice}, You win!`;
-  const tieMessage = "Oh! Looks like we have a tie.";
-  const loseMessage = `${playerChoice} loses against ${pcChoice}, You lose.`;
 
   const outcomes = {
     Rock: { beats: "Scissors" },
     Paper: { beats: "Rock" },
-    Scissors: { beats: "Paper" },
+    Scissors: { beats: "Paper" }
   };
 
   if (playerChoice === pcChoice) {
-    elements.infoText.textContent = 'EVEN MATCH';
-    elements.battleText.textContent = `We've got a tie!`;
-    console.log(tieMessage);
+    elements.infoText.innerHTML = 'EVEN MATCH';
+    elements.battleText.innerHTML = 'We\'ve got a tie!';
   } else if (outcomes[playerChoice].beats === pcChoice) {
     playerWins++;
-    elements.infoText.textContent = 'VICTORY!';
-    elements.battleText.textContent = `${playerChoice} defeats ${outcomes[playerChoice].beats}!!!`;
-    elements.winCounter.textContent = playerWins;
-    console.log(winMessage);
+    elements.infoText.innerHTML = 'VICTORY!';
+    elements.battleText.innerHTML = `${playerChoice} defeats ${outcomes[playerChoice].beats}!!!`;
+    elements.winCounter.innerHTML = playerWins;
   } else {
     pcWins++;
-    elements.infoText.textContent = 'DEFEAT.';
-    elements.battleText.textContent = `${playerChoice} is defeated by ${outcomes[playerChoice].beats}.`;
-    elements.loseCounter.textContent = pcWins;
-    console.log(loseMessage);
+    elements.infoText.innerHTML = 'DEFEAT.';
+    elements.battleText.innerHTML = `${playerChoice} is defeated by ${outcomes[playerChoice].beats}.`;
+    elements.loseCounter.innerHTML = pcWins;
   }
 
-  if (playerWins === maxWins || pcWins === maxWins) {
+  if (playerWins === MAX_WINS || pcWins === MAX_WINS) {
     endGame();
   }
 }
 
+// Function to end the game
 function endGame() {
-  const gameOverModal = document.getElementById('gameOverModal');
-  const restartButton = document.getElementById('restartButton');
+  elements.restartButton.addEventListener('click', resetGame);
 
-  restartButton.addEventListener('click', resetGame);
-  outcome.textContent = playerWins === maxWins ? 'YOU ARE VICTORIOUS!' : 'YOU WERE DEFEATED.';
+  if (playerWins === MAX_WINS) {
+    elements.outcome.innerHTML = 'YOU ARE VICTORIOUS!';
+  } else if (pcWins === MAX_WINS) {
+    elements.outcome.innerHTML = 'YOU WERE DEFEATED.';
+  }
 
-  gameOverModal.style.display = "block";
+  elements.gameOverModal.style.display = "block";
 }
 
+// Function to reset the game
 function resetGame() {
   playerWins = 0;
   pcWins = 0;
-  elements.winCounter.textContent = playerWins;
-  elements.loseCounter.textContent = pcWins;
+  elements.winCounter.innerHTML = playerWins;
+  elements.loseCounter.innerHTML = pcWins;
+  elements.playerChoiceLabel.style.display = "none"; // Hide the player choice label
+  elements.pcChoiceLabel.style.display = "none"; // Hide the PC choice label
   elements.playerWeapon.textContent = "?";
   elements.pcWeapon.textContent = "?";
 
-  const gameOverModal = document.getElementById('gameOverModal');
-  gameOverModal.style.display = "none";
+  elements.gameOverModal.style.display = "none";
 }

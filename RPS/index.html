@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock-Paper-Scissors</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-    <header>
-        <h1>RPS</h1>
-    </header>
-    <main>
-        <section class="text">
-            <p class="infoText">
-                Choose your weapon
-            </p>
-            <p class="battleText">
-                first to 5 wins is victorious!
-            </p>
-        </section>
-        <section class="battleSection">
-            <div class="selectionContainer">
-                <div class="playerWeapon">
-                    ?
-                </div>
-                <div class="pcWeapon">
-                    ?
-                </div>
-            </div>
-            <div class="scoreboard">
-                scoreboard
-                <div>
-                    <p>Wins: <span class="winCounter">0</span></p>
-                    <p>Loses: <span class="loseCounter">0</span></p>
-                </div>
-            </div>
-        </section>
-        <section class="weapons">
-            <div class="buttons">
-                <button class="attack" id="Rock">👊</button>
-                <button class="attack" id="Paper">✋</button>
-                <button class="attack" id="Scissors"> ✌️</button>
-            </div>
-        </section>
+  <header>
+    <h1>RPS</h1>
+  </header>
+  <main>
+    <section class="text">
+      <p class="infoText">Choose your weapon</p>
+      <p class="battleText">First to 5 wins is victorious!</p>
+    </section>
+    <section class="battleSection">
+      <div class="selectionContainer">
+        <div class="playerWeapon">
+          <span class="playerChoiceLabel">Player</span>
+          <span class="playerChoice"></span>
+        </div>
+        <div class="pcWeapon">
+          <span class="pcChoiceLabel">PC</span>
+          <span class="pcChoice"></span>
+        </div>
+      </div>
+      <div class="scoreboard">
+        <p>Scoreboard</p>
+        <div>
+          <p>Wins: <span class="winCounter">0</span></p>
+          <p>Loses: <span class="loseCounter">0</span></p>
+        </div>
+      </div>
+    </section>
+    <section class="weapons">
+      <div class="buttons">
+        <button class="attack" id="Rock">👊</button>
+        <button class="attack" id="Paper">✋</button>
+        <button class="attack" id="Scissors">✌️</button>
+      </div>
+    </section>
+  </main>
 
-    </main>
-
-    <!-- Modal HTML -->
-<div id="gameOverModal" class="modal">
+  <!-- Modal HTML -->
+  <div id="gameOverModal" class="modal">
     <div class="modal-content">
       <h2>The game is over!</h2>
       <p id="outcome"></p>
@@ -58,9 +53,7 @@
       <button id="restartButton">Restart</button>
     </div>
   </div>
-  
 
-    <script src="./script.js"></script>
+  <script src="./script.js"></script>
 </body>
-
 </html>
