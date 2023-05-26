@@ -1,68 +1,88 @@
-// FIRST, bring the buttons to js
-let attackButtons = document.querySelectorAll(".attack");
+const attackButtons = document.querySelectorAll(".attack");
+const elements = {
+  infoText: document.querySelector('.infoText'),
+  battleText: document.querySelector('.battleText'),
+  playerWeapon: document.querySelector('.playerWeapon'),
+  pcWeapon: document.querySelector('.pcWeapon'),
+  winCounter: document.querySelector('.winCounter'),
+  loseCounter: document.querySelector('.loseCounter'),
+};
+const outcome = document.getElementById('outcome');
 
-// SECOND, add functionality each time a button is clicked
-attackButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    let playerChoice = button.id;
-    playGame(playerChoice);
+const emojis = {
+  Rock: "👊",
+  Paper: "✋",
+  Scissors: "✌️"
+};
+
+const maxWins = 3;
+let playerWins = 0;
+let pcWins = 0;
+
+attackButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    playGame(button.id);
   });
 });
 
-// THIRD, this is the part I dont understand, the callbacks.
-// But this function will be called when a button is clicked after the 'button.id'
-
 function playGame(playerChoice) {
-  // Create the array of possible choices the pc can take
-  let choices = ["Rock", "Paper", "Scissors"];
-  // Randomly Create a selection for the computer to play with.
-  let pcChoice = choices[Math.floor(Math.random() * choices.length)];
-  console.log(`You selected ${playerChoice}, and your opponent choose ${pcChoice}`);
+  const choices = ["Rock", "Paper", "Scissors"];
+  const pcChoice = choices[Math.floor(Math.random() * choices.length)];
 
-  // NOW NOW NOW
-  // I GOTTA CREATE THE LOGIC THAT SETS THE GAME
+  elements.playerWeapon.textContent = emojis[playerChoice];
+  elements.pcWeapon.textContent = emojis[pcChoice];
 
-  // WITH this structure I created, called 'a dictionary' I can create Key Value pairs that will facilitate
-  // the reading of the code and dodges the need of a long list of 'ifs'.
-  // also makes the code more readable
-  let winMessage = `${playerChoice} beats ${pcChoice}, You win!`;
-  let tieMessage = 'Oh! Looks like we have a tie.';
-  let loseMessage = `${playerChoice} loses against ${pcChoice}, You lose.`;
+  const winMessage = `${playerChoice} beats ${pcChoice}, You win!`;
+  const tieMessage = "Oh! Looks like we have a tie.";
+  const loseMessage = `${playerChoice} loses against ${pcChoice}, You lose.`;
 
-  let outcomes = {
-    Rock: { beats: "Scissors"},
-    Paper: { beats: "Rock"},
-    Scissors: { beats: "Paper"}
+  const outcomes = {
+    Rock: { beats: "Scissors" },
+    Paper: { beats: "Rock" },
+    Scissors: { beats: "Paper" },
   };
 
-  // THIS ONE is the game, it compares who is the one winning or losing.
-
   if (playerChoice === pcChoice) {
-    console.log(tieMessage)
+    elements.infoText.textContent = 'EVEN MATCH';
+    elements.battleText.textContent = `We've got a tie!`;
+    console.log(tieMessage);
   } else if (outcomes[playerChoice].beats === pcChoice) {
-    console.log(winMessage)
+    playerWins++;
+    elements.infoText.textContent = 'VICTORY!';
+    elements.battleText.textContent = `${playerChoice} defeats ${outcomes[playerChoice].beats}!!!`;
+    elements.winCounter.textContent = playerWins;
+    console.log(winMessage);
   } else {
-    console.log(loseMessage)
+    pcWins++;
+    elements.infoText.textContent = 'DEFEAT.';
+    elements.battleText.textContent = `${playerChoice} is defeated by ${outcomes[playerChoice].beats}.`;
+    elements.loseCounter.textContent = pcWins;
+    console.log(loseMessage);
+  }
+
+  if (playerWins === maxWins || pcWins === maxWins) {
+    endGame();
   }
 }
 
+function endGame() {
+  const gameOverModal = document.getElementById('gameOverModal');
+  const restartButton = document.getElementById('restartButton');
 
-/* NEXT STEPS
+  restartButton.addEventListener('click', resetGame);
+  outcome.textContent = playerWins === maxWins ? 'YOU ARE VICTORIOUS!' : 'YOU WERE DEFEATED.';
 
-FIRST
-I need to make it so, everytime theres a win or a lose, I add to the WINS/LOSES scoreboard
+  gameOverModal.style.display = "block";
+}
 
-SECOND
-after a 'weapon' is chosen
-  'choose your weapon'  to ==> Victory/Defeat
-  'first to 5 wins is victorious'  to ==> battle text
+function resetGame() {
+  playerWins = 0;
+  pcWins = 0;
+  elements.winCounter.textContent = playerWins;
+  elements.loseCounter.textContent = pcWins;
+  elements.playerWeapon.textContent = "?";
+  elements.pcWeapon.textContent = "?";
 
-      'battle text' => ${playerSelection} defeat/isDefeated ${pcSelection}
-
-THIRD
-the 'playerWeapon' icon or text should change tyo match those of the attack being used.
-'pcWeapon' might as well
-
-FOURTH
-the game ends as soon as the scoreboard reaches 5 on any way
-*/
+  const gameOverModal = document.getElementById('gameOverModal');
+  gameOverModal.style.display = "none";
+}
