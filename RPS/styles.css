@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #282c34;
     color: white;
     display: flex;
@@ -13,80 +15,73 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .infoText,
-  .battleText {
+}
+
+.infoText, .battleText {
     text-align: center;
     margin-bottom: 10px;
     font-size: 18px;
-  }
-  
-  .battleText {
+}
+
+.battleText {
     font-size: 24px;
-  }
-  
-  .selectionContainer {
+}
+
+.selectionContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .playerWeapon,
-  .pcWeapon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 160px;
-    height: 210px;
-    text-align: center;
-  }
-  
-  .playerChoiceLabel,
-  .pcChoiceLabel {
+}
+
+.playerWeapon,
+.pcWeapon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 160px;
+  min-height: 210px;
+}
+
+.playerChoiceLabel, .pcChoiceLabel {
     font-size: 14px;
     margin-bottom: 5px;
-  }
-  
-  .playerChoice,
-  .pcChoice {
-    font-size: 96px;
-    width: 160px;
-    height: 160px;
-  }
-  
-  .playerChoiceLabel,
-  .pcChoiceLabel {
-    display: none;
-  }
-  
-  .scoreboard {
+}
+
+.playerChoice,
+.pcChoice {
+  font-size: 96px;
+  min-width: 160px;
+  min-height: 210px;
+}
+
+
+.scoreboard {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .scoreboard p {
+}
+
+.scoreboard p {
     margin-bottom: 5px;
-  }
-  
-  .weapons {
+}
+
+.weapons {
     display: flex;
     justify-content: center;
-  }
-  
-  .buttons {
+}
+
+.buttons {
     display: flex;
     justify-content: space-between;
     width: 300px;
-  }
-  
-  button {
+}
+
+button {
     font-size: 24px;
     padding: 10px 20px;
     border: none;
@@ -94,13 +89,13 @@
     background-color: #555;
     color: white;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #777;
-  }
-  
-  .modal {
+}
+
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -110,9 +105,9 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: #333;
     margin: 15% auto;
     padding: 20px;
@@ -120,9 +115,9 @@
     width: 300px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  button.modal-restart {
+}
+
+button.modal-restart {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -130,9 +125,8 @@
     background-color: #555;
     color: white;
     cursor: pointer;
-  }
-  
-  button.modal-restart:hover {
+}
+
+button.modal-restart:hover {
     background-color: #777;
-  }
-  
+}
