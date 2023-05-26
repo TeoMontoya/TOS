@@ -61,8 +61,7 @@
     height: 160px;
   }
   
-  .playerChoiceLabel,
-  .pcChoiceLabel {
+  .playerChoiceLabel .pcChoiceLabel {
     display: none;
   }
   
