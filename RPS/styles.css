@@ -50,6 +50,7 @@
   
   .playerChoiceLabel,
   .pcChoiceLabel {
+    display: none;
     font-size: 14px;
     margin-bottom: 5px;
   }
@@ -60,10 +61,7 @@
     width: 160px;
     height: 160px;
   }
-  
-  .playerChoiceLabel .pcChoiceLabel {
-    display: none;
-  }
+
   
   .scoreboard {
     text-align: center;

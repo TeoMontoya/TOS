@@ -92,6 +92,8 @@ function resetGame() {
   pcWins = 0;
   elements.winCounter.innerHTML = playerWins;
   elements.loseCounter.innerHTML = pcWins;
+  elements.infoText.innerHTML = 'Choose your weapon';
+  elements.battleText.innerHTML = 'First to 5 wins is victorious!'
   elements.playerChoiceLabel.style.display = "none"; // Hide the player choice label
   elements.pcChoiceLabel.style.display = "none"; // Hide the PC choice label
   elements.playerWeapon.textContent = "?";
