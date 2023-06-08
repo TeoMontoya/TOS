@@ -1,0 +1,42 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.formContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+form > div {
+    flex: 0 0 calc(50% - 5px); /* Adjust the spacing as needed */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+
+form input{
+    max-width: 250px; /* Set your desired maximum size here */
+}
+
+.error {
+    border: 2px solid red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
