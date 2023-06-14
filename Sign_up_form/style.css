@@ -1,42 +1,142 @@
+/* color for the button #596D48
+
+light border of the inputs #E5E7EB
+
+remeber to add a shadow and bluecolor to the border of the inputs when the user is using them with the :focus pseudo class */
+
 * {
   list-style: none;
   text-decoration: none;
   color: inherit;
+  margin: 0;
+  padding: 0;
 }
 
+.parentContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.mainBackground {
+  flex: 1;
+  position: relative;
+  background-image: url("./background-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.backgroundWrapper {
+  height: 66.66%; /* Set the height to two-thirds of the mainBackground */
+}
+
+
+.customDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 2;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+
+.customDiv .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px; /* Set the desired height */
+}
+
+.customDiv span {
+  font-size: 64px;
+}
+
+.customDiv .icon img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mainSection {
+  flex: 2;
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainText {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+h3{
+  padding: 10px 20px;
+}
+
+.secondPara {
+  font-style: italic;
+  color: #666;
+}
 
 .formContainer {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 }
+
 form {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 form > div {
-    flex: 0 0 calc(50% - 5px); /* Adjust the spacing as needed */
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    padding: 10px;
-    box-sizing: border-box;
+  flex: 0 0 calc(50% - 5px);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 
 
-
-form input{
-    max-width: 250px; /* Set your desired maximum size here */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+}
+.buttonContainer{
+  padding: 10px 20px;
 }
 
-.error {
-    border: 2px solid red;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
+button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+a {
+  color: #555;
+  text-decoration: underline;
+}

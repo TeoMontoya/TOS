@@ -2,70 +2,38 @@
 const form = document.querySelector('form');
 const submitButton = document.querySelector('#submitButton');
 
-const phoneNumberInput = document.getElementById('phone');
-
-phoneNumberInput.addEventListener('input', function(event) {
-  const input = event.target.value;
-  const numbersOnly = input.replace(/[^\d()\s\-_]/g, '');
-  event.target.value = numbersOnly;
-});
-
-
-
 // Add event listener to the button
 submitButton.addEventListener('click', function() {
-  // Check the validity of each field
-  const firstNameInput = document.getElementById('first-name');
-  const lastNameInput = document.getElementById('last-name');
-  const emailInput = document.getElementById('email');
-  const phoneInput = document.getElementById('phone');
-  const passwordInput = document.getElementById('password');
-  const confirmationPasswordInput = document.getElementById('confirmationPassword');
+  const fieldIds = ['first-name', 'last-name', 'email', 'phone', 'password', 'confirmationPassword'];
+  let isFormValid = true;
 
-  const isFirstNameValid = checkValidity(firstNameInput);
-  const isLastNameValid = checkValidity(lastNameInput);
-  const isEmailValid = checkValidity(emailInput, 'email');
-  const isPhoneValid = checkValidity(phoneInput, 'phone');
-  const isPasswordValid = checkValidity(passwordInput);
-  const isConfirmationPasswordValid = checkValidity(confirmationPasswordInput) && checkPasswordMatch();
+  fieldIds.forEach(fieldId => {
+    const inputField = document.getElementById(fieldId);
+    const fieldType = getFieldValidationType(fieldId);
+    const isValid = checkValidity(inputField, fieldType);
 
-  if (isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmationPasswordValid) {
-    // All fields are valid
+    if (!isValid) {
+      displayErrorMessage(inputField);
+      isFormValid = false;
+    } else {
+      clearErrorMessage(inputField);
+    }
+  });
+
+  if (isFormValid) {
     console.log('All fields are valid.');
-  } else {
-    // Display error messages
-    if (!isFirstNameValid) {
-      displayErrorMessage(firstNameInput, 'Please enter a valid first name.');
-    } else {
-      clearErrorMessage(firstNameInput);
-    }
-    if (!isLastNameValid) {
-      displayErrorMessage(lastNameInput, 'Please enter a valid last name.');
-    } else {
-      clearErrorMessage(lastNameInput);
-    }
-    if (!isEmailValid) {
-      displayErrorMessage(emailInput, 'Please enter a valid email address.');
-    } else {
-      clearErrorMessage(emailInput);
-    }
-    if (!isPhoneValid) {
-      displayErrorMessage(phoneInput, 'Please enter a valid phone number.');
-    } else {
-      clearErrorMessage(phoneInput);
-    }
-    if (!isPasswordValid) {
-      displayErrorMessage(passwordInput, 'Please enter a valid password.');
-    } else {
-      clearErrorMessage(passwordInput);
-    }
-    if (!isConfirmationPasswordValid) {
-      displayErrorMessage(confirmationPasswordInput, 'Passwords do not match.');
-    } else {
-      clearErrorMessage(confirmationPasswordInput);
-    }
   }
 });
+
+// Function to determine the validation type of a field
+function getFieldValidationType(fieldId) {
+  if (fieldId === 'email') {
+    return 'email';
+  } else if (fieldId === 'phone') {
+    return 'phone';
+  }
+  return null;
+}
 
 // Function to check field validity
 function checkValidity(inputField, fieldType) {
@@ -78,29 +46,18 @@ function checkValidity(inputField, fieldType) {
   }
 
   if (fieldType === 'phone') {
-    const phonePattern = /^(?:\+\d{1,3}\s?)?(?:\(\d{3}\)\s?)?\d{3}(?:[-\s]?)\d{4}$/;
+    const phonePattern = /^(?:\+?\d{1,2}\s?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/;
     return isValid && phonePattern.test(value);
   }
 
-  if (isValid && value.length > 0) {
-    return true;
-  }
-
-  return false;
-}
-
-// Function to check if passwords match
-function checkPasswordMatch() {
-  const passwordInput = document.getElementById('password');
-  const confirmationPasswordInput = document.getElementById('confirmationPassword');
-  return passwordInput.value === confirmationPasswordInput.value;
+  return isValid && value.length > 0;
 }
 
 // Function to display error message
-function displayErrorMessage(inputField, message) {
+function displayErrorMessage(inputField) {
   const errorMessage = inputField.nextElementSibling;
   inputField.classList.add('error'); // Add error class to input field
-  errorMessage.textContent = message;
+  errorMessage.textContent = getErrorMessage(inputField.id);
 }
 
 // Function to clear error message
@@ -108,4 +65,24 @@ function clearErrorMessage(inputField) {
   const errorMessage = inputField.nextElementSibling;
   inputField.classList.remove('error'); // Remove error class from input field
   errorMessage.textContent = '';
+}
+
+// Function to get the error message for a field
+function getErrorMessage(fieldId) {
+  switch (fieldId) {
+    case 'first-name':
+      return 'Please enter a valid first name.';
+    case 'last-name':
+      return 'Please enter a valid last name.';
+    case 'email':
+      return 'Please enter a mail address following the `example@example.com` format.';
+    case 'phone':
+      return 'Please enter a valid phone number.';
+    case 'password':
+      return 'Please enter a valid password.';
+    case 'confirmationPassword':
+      return 'Passwords do not match.';
+    default:
+      return '';
+  }
 }
