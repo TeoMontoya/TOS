@@ -24,6 +24,7 @@
 //part 1.
 //Calling the modal and the form
 const modal = document.getElementById("myModal");
+const modalContent = document.querySelector(".modal-content");
 const form = document.getElementById("bookForm");
 //calling the button and the bookContainer
 const addBookBtn = document.getElementById("addBookButton");
@@ -32,6 +33,15 @@ const bookContainer = document.getElementById("book");
 addBookBtn.addEventListener("click", function () {
   modal.style.display = "block";
 });
+
+modal.addEventListener("click", function(event) {
+  // Check if the click occurred outside the modal content
+  if (event.target !== modalContent && !modalContent.contains(event.target)) {
+      // If so, close the modal
+      modal.style.display = "none";
+  }
+});
+
 
 // The array that will store the library
 const myLibrary = [];
