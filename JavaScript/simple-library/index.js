@@ -29,19 +29,20 @@ const form = document.getElementById("bookForm");
 //calling the button and the bookContainer
 const addBookBtn = document.getElementById("addBookButton");
 const bookContainer = document.getElementById("book");
+//adding the checkbok reference to the js
+const isReadCheckbox = document.getElementById("isRead");
 
 addBookBtn.addEventListener("click", function () {
   modal.style.display = "block";
 });
 
-modal.addEventListener("click", function(event) {
+modal.addEventListener("click", function (event) {
   // Check if the click occurred outside the modal content
   if (event.target !== modalContent && !modalContent.contains(event.target)) {
-      // If so, close the modal
-      modal.style.display = "none";
+    // If so, close the modal
+    modal.style.display = "none";
   }
 });
-
 
 // The array that will store the library
 const myLibrary = [];
@@ -55,7 +56,7 @@ form.addEventListener("submit", function (event) {
   const pagesInput = document.getElementById("pagesInput").value;
 
   if (titleInput && authorInput && pagesInput) {
-    let newBook = new Book(titleInput, authorInput, pagesInput, true);
+    let newBook = new Book(titleInput, authorInput, pagesInput, isReadCheckbox.checked);
     addBookToLibrary(newBook);
     renderBooks();
     console.log(myLibrary);
@@ -87,14 +88,38 @@ function renderBooks() {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-        <h2>Title:  ${book.title}</h2>
+        <h2>Title: ${book.title}</h2>
         <p>Author: ${book.author}</p>
-        <p>Pages: ${book.pages}
+        <p>Pages: ${book.pages}</p>
+        <button class='dynamic-button' data-index=${index}>Button Content</button>
         <button class='delete-button' data-index=${index}>Delete</button>
-        `;
+    `;
+
+    const dynamicButton = card.querySelector(".dynamic-button");
+
+    if (isReadCheckbox.checked) {
+      dynamicButton.textContent = "Read";
+      dynamicButton.classList.add("isRead");
+    } else {
+      dynamicButton.textContent = "Unread";
+      dynamicButton.classList.add("isNotRead");
+    }
+
+    dynamicButton.addEventListener("click",function(){
+      if(dynamicButton.classList.contains("isRead")){
+        dynamicButton.classList.remove("isRead");
+        dynamicButton.classList.add("isNotRead");
+        dynamicButton.textContent = "Unread";
+      }else if(dynamicButton.classList.contains("isNotRead")){
+        dynamicButton.classList.remove("isNotRead");
+        dynamicButton.classList.add("isRead");
+        dynamicButton.textContent = "Read";
+      }
+    })
+
     bookContainer.appendChild(card);
   });
-  attachDeleteHandlers(); //attach event handlers to delete buttons
+  attachDeleteHandlers(); // attach event handlers to delete buttons
 }
 
 // 6. create the delete button logic
