@@ -18,7 +18,13 @@ function Gameboard() {
 
     //this will be the method for when someone 
     // clicks a square
-    const placeholderMethod = () => null;
+    const makeMove = (row, column, playerToken) => {
+        if (board[row] && board[row][column] && board[row][column].getValue() === 0) {
+            board[row][column].addToken(playerToken);
+            return true;
+        }
+        return false;
+    };
 
     // This method will be used to print
     // the board to the console
@@ -27,7 +33,7 @@ function Gameboard() {
         console.log(boardWithCellValues)
     }
 
-    return {getBoard, placeholderMethod, printBoard}
+    return {getBoard, makeMove, printBoard}
 }
 
 /*
@@ -60,6 +66,18 @@ function gameController (
 ) {
     const board = Gameboard();
 
+    const checkWinCondition = () => {
+        const b = board.getBoard(); // Get the current state of the board
+        // Check rows, columns, and diagonals for a win
+        for (let i = 0; i < 3; i++) {
+            if (b[i][0].getValue() === b[i][1].getValue() && b[i][1].getValue() === b[i][2].getValue() && b[i][0].getValue() !== 0) return true;
+            if (b[0][i].getValue() === b[1][i].getValue() && b[1][i].getValue() === b[2][i].getValue() && b[0][i].getValue() !== 0) return true;
+        }
+        if (b[0][0].getValue() === b[1][1].getValue() && b[1][1].getValue() === b[2][2].getValue() && b[0][0].getValue() !== 0) return true;
+        if (b[0][2].getValue() === b[1][1].getValue() && b[1][1].getValue() === b[2][0].getValue() && b[0][2].getValue() !== 0) return true;
+        return false;
+    };
+
     const players = [
         {
             name: playerOneName,
@@ -72,6 +90,7 @@ function gameController (
     ];
 
     let activePlayer = players[0];
+    
 
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
@@ -85,13 +104,18 @@ function gameController (
         console.log(`${getActivePlayer().name}'s turn`);
     };
 
-    const playRound = () => {
-
-        //logic for playing the game
-        
-        switchPlayerTurn();
+    const playRound = (row, column) => {
+        if (board.makeMove(row, column, activePlayer.token)) {
+            if (checkWinCondition()) {
+                console.log(`${activePlayer.name} wins!`);
+                return;
+            }
+            switchPlayerTurn();
+        } else {
+            console.log("Invalid move, try again.");
+        }
         printNewRound();
-    }
+    };
 
     printNewRound();
 
