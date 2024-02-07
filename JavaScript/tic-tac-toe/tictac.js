@@ -119,7 +119,9 @@ function gameController (
 
     printNewRound();
 
-    return {playRound, getActivePlayer}
+    return {playRound, getActivePlayer, getBoard: board.getBoard}
 }
+
+function screenController()
 
 const game = gameController();
