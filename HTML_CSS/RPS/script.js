@@ -78,9 +78,9 @@ function endGame() {
   elements.restartButton.addEventListener('click', resetGame);
 
   if (playerWins === MAX_WINS) {
-    elements.outcome.innerHTML = 'YOU ARE VICTORIOUS!';
+    elements.outcome.innerHTML = 'VICTORY!';
   } else if (pcWins === MAX_WINS) {
-    elements.outcome.innerHTML = 'YOU WERE DEFEATED.';
+    elements.outcome.innerHTML = 'DEFEAT.';
   }
 
   elements.gameOverModal.style.display = "block";
